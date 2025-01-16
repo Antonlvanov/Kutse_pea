@@ -1,18 +1,30 @@
 ﻿@model Kutse_pea.Models.Guest
 
-using (Html.BeginForm()) {
-@Html.ValidationSummary()
-<p> Sisesta nimi: @Html.TextBoxFor(x => x.Name)</p>
-<p> Sisesta email: @Html.TextBoxFor(x => x.Email)</p>
-<p> Sisesta nimi: @Html.TextBoxFor(x => x.Phone)</p>
-<p>
-    Sinu valik:
-    @Html.DropDownListFor(x => x.WillAttend,
-   new[]
-    {
-        new SelectListItem() {Text="Tule kindlasti!", Value=bool.TrueString},
-        new SelectListItem() {Text="Kahjuks ei saa tulla!", Value=bool.FalseString}
-    }, "Vali siit")
-</p>
-<input type="submit" values="Saada vastus" />
+@using (Html.BeginForm())
+{
+    <form>
+        <h1>Sisesta oma andmed</h1>
+        @Html.ValidationSummary()
+        <p>
+            Sisesta nimi:
+            @Html.TextBoxFor(x => x.Name)
+        </p>
+        <p>
+            Sisesta email:
+            @Html.TextBoxFor(x => x.Email)
+        </p>
+        <p>
+            Sisesta telefon:
+            @Html.TextBoxFor(x => x.Phone)
+        </p>
+        <p>
+            Sinu valik:
+            @Html.DropDownListFor(x => x.WillAttend,
+               new[] {
+                   new SelectListItem() {Text="Tule kindlasti!", Value=bool.TrueString},
+                   new SelectListItem() {Text="Kahjuks ei saa tulla!", Value=bool.FalseString}
+               }, "Vali siit")
+        </p>
+        <input type="submit" value="Saada vastus" />
+    </form>
 }
